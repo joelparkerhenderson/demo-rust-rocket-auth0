@@ -1,0 +1,45 @@
+
+
+//// TODO
+
+// The function implied here would usually perform an HTTP-GET
+// on the JWKS-URL for an authentication provider and deserialize
+// the result into the `alcoholic_jwt::JWKS`-struct.
+let jwks: alcoholic_jwt::JWKS = jwks_fetch(
+    auth0::api::endpoints::jwks::url
+);
+
+pub fn jwks_fetch(url: url::Url) -> alcoholic_jwt::JWKS {
+    info!("jwks_fetch");
+    let client = reqwest::blocking::Client::new(); // TODO remove blocking
+    let response = client.get(url).send()?;
+    if response.status().is_success() {
+        info!("jwks_fetch -> response -> success");
+    } 
+    else {
+        warn!("jwks_fetch -> response -> not success");
+        warn!("jwks_fetch -> response -> not success -> status:{:?} text:{:?}", response.status(), response.text());
+        //TODO return err
+    }
+
+
+    let token = some_token_fetching_function();
+
+    // Several types of built-in validations are provided:
+    let validations = vec![
+    alcoholic_jwt::Validation::Issuer("auth.test.aprila.no".into()),
+    alcoholic_jwt::Validation::SubjectPresent,
+    ];
+
+    // If a JWKS contains multiple keys, then the correct KID first
+    // needs to be fetched from the token headers.
+    let kid = alcoholic_jwt::token_kid(&token)
+        .expect("Failed to decode token headers")
+        .expect("No 'kid' claim present in token");
+
+    let jwk = jwks.find(&kid).expect("Specified key not found in set");
+    alcoholic_jwt::validate(token, jwk, jwk_validations).expect("Token validation has failed!");
+
+}
+
+////////////////////

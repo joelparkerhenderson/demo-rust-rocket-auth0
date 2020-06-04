@@ -1,0 +1,114 @@
+[package]
+name = "demo_rust_rocket_auth0"
+version = "0.1.0"
+authors = ["Joel Parker Henderson <joel@joelparkerhenderson.com>"]
+edition = "2018"
+license = "GPL2"
+homepage = "https://github.com/joelparkerhenderson/demo_rust_rocket_auth0"
+repository = "https://github.com/joelparkerhenderson/demo_rust_rocket_auth0"
+documentation = "https://github.com/joelparkerhenderson/demo_rust_rocket_auth0"
+
+description = """
+Demo of Rust and Rocket and Auth0
+"""
+readme = "README.md"
+keywords = ["demo", "rust", "rocket", "web", "auth", "authentication"]
+categories = ["web-programming"]
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+
+# Library for validation of RS256 JWTs.
+alcoholic_jwt = "1.0.0"
+
+# Base64 encode and decode as bytes or utf8.
+base64 = "*"
+
+# HTTP cookie parsing and cookie jar management. Supports signed and private (encrypted, authenticated) jars. 
+cookie = "*"
+
+# A logging implementation for `log` which is configured via an environment variable. 
+env_logger = "*"
+
+# Cross-platform library for retrieving random data from system source.
+getrandom = "*"
+
+# Chrono: Date and Time for Rust
+#
+# Chrono currently uses the time crate, such as for Duration.
+# This will change when Chrono is upgraded to use Rust std time.
+chrono = { version = "0.4.10", features = ["serde"] }
+time = "*"
+
+# Encode and decode data to/from hexadecimal representation. 
+hex = "*"
+
+# A lightweight logging facade for Rust.
+log = "*"
+
+# FFI bindings to OpenSSL.
+openssl-sys = "*"
+
+# Needed for Postgres.
+openssl = "*"
+
+# rand: random number generator
+rand = "^0.7.2"
+
+# Reqeust: higher level HTTP client library.
+#
+# Features:
+#
+#   * default-tls (enabled by default): Provides TLS support to connect over HTTPS.
+#   * native-tls: Enables TLS functionality provided by native-tls.
+#   * native-tls-vendored: Enables the vendored feature of native-tls.
+#   * rustls-tls: Enables TLS functionality provided by rustls.
+#   * blocking: Provides the blocking client API.
+#   * cookies: Provides cookie session support.
+#   * gzip: Provides response body gzip decompression.
+#   * brotli: Provides response body brotli decompression.
+#   * json: Provides serialization and deserialization for JSON bodies.
+#   * stream: Adds support for futures::Stream.
+#   * socks: Provides SOCKS5 proxy support.
+#   * trust-dns: Enables a trust-dns async resolver instead of default threadpool using getaddrinfo.
+#
+reqwest = { version = "*", features = ["blocking", "cookies", "default-tls", "json", "stream"] }
+
+# rocket: web framework
+rocket = { version = "^0.4.4", features = ["tls"] }
+rocket_cors = { version = "^0.5.1", default-features = false }
+
+# rust-crypto: rust cryptography
+rust-crypto = "^0.2.36"
+
+# Serde: a framework for serializing and deserializing Rust data structures.
+# The Serde crate has core APIs, including Serialize and Deserialize traits.
+# Always required for Serde. The "derive" feature is only required when
+# using #[derive(Serialize, Deserialize)] to make Serde work with structs
+# and enums defined in your crate.
+#
+# The `serde_derive` version must match the serde dependency version.
+#
+serde = { version = "^1.0.103", features = ["derive"] }
+serde_derive = "^1.0.103"
+serde_json = "^1.0.44"
+
+# A simple logging facility for Rust's log crate.
+simplelog = "*"
+
+# slug: TODO
+slug = "^0.1.4"
+
+# URL library for Rust, based on the WHATWG URL Standard.
+url = "*"
+
+# validator: TODO
+validator = "^0.10.0"
+validator_derive = "^0.10.0"
+
+[dependencies.rocket_contrib]
+version = "^0.4.2"
+default-features = false
+features = ["json", "serve"]
+
