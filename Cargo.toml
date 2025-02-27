@@ -20,7 +20,7 @@ categories = ["web-programming"]
 [dependencies]
 
 # Library for validation of RS256 JWTs.
-alcoholic_jwt = "1.0.0"
+alcoholic_jwt = "1.0.1"
 
 # Base64 encode and decode as bytes or utf8.
 base64 = "*"
@@ -38,7 +38,7 @@ getrandom = "*"
 #
 # Chrono currently uses the time crate, such as for Duration.
 # This will change when Chrono is upgraded to use Rust std time.
-chrono = { version = "0.4.10", features = ["serde"] }
+chrono = { version = "0.4.38", features = ["serde"] }
 time = "*"
 
 # Encode and decode data to/from hexadecimal representation. 
@@ -54,7 +54,7 @@ openssl-sys = "*"
 openssl = "*"
 
 # rand: random number generator
-rand = "^0.7.2"
+rand = "^0.7.3"
 
 # Reqeust: higher level HTTP client library.
 #
@@ -76,8 +76,8 @@ rand = "^0.7.2"
 reqwest = { version = "*", features = ["blocking", "cookies", "default-tls", "json", "stream"] }
 
 # rocket: web framework
-rocket = { version = "^0.4.4", features = ["tls"] }
-rocket_cors = { version = "^0.5.1", default-features = false }
+rocket = { version = "^0.4.11", features = ["tls"] }
+rocket_cors = { version = "^0.5.2", default-features = false }
 
 # rust-crypto: rust cryptography
 rust-crypto = "^0.2.36"
@@ -90,25 +90,25 @@ rust-crypto = "^0.2.36"
 #
 # The `serde_derive` version must match the serde dependency version.
 #
-serde = { version = "^1.0.103", features = ["derive"] }
-serde_derive = "^1.0.103"
-serde_json = "^1.0.44"
+serde = { version = "^1.0.210", features = ["derive"] }
+serde_derive = "^1.0.210"
+serde_json = "^1.0.132"
 
 # A simple logging facility for Rust's log crate.
 simplelog = "*"
 
 # slug: TODO
-slug = "^0.1.4"
+slug = "^0.1.6"
 
 # URL library for Rust, based on the WHATWG URL Standard.
 url = "*"
 
 # validator: TODO
-validator = "^0.10.0"
-validator_derive = "^0.10.0"
+validator = "^0.10.1"
+validator_derive = "^0.10.1"
 
 [dependencies.rocket_contrib]
-version = "^0.4.2"
+version = "^0.4.11"
 default-features = false
 features = ["json", "serve"]
 
